@@ -13,7 +13,7 @@ class App extends React.Component {
     }
 
     changeHandler(event){
-        this.setState({currentInput:event.target.value});
+        this.setState({currentInput: event.target.value});
         console.log("change", event.target.value);
     }
 
@@ -23,13 +23,13 @@ class App extends React.Component {
       if (this.state.currentInput.length > 1 && this.state.currentInput.length < 200) {
         todoList = this.state.list;
         todoList.push(this.state.currentInput);
-        this.setState({list:todoList});
+        this.setState({list:todoList, errorText: ''});
         let clearText = '';
         this.setState({currentInput: clearText});
       }
       else {
-        let errorMessageToUSer = "You only have 200 letters as limit!"
-        this.setState({errorText: errorMessageToUSer, currentInput: ''});
+        let errorMessageToUser = "The input must be more than 1 letter and maximum of 200 letters as limit!"
+        this.setState({errorText: errorMessageToUser, currentInput: ''});
       }
     }
         //need smth that takes the input and push into a list and show it in a <ul></ul>
