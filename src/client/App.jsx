@@ -7,7 +7,8 @@ class App extends React.Component {
 
       this.state = {
         currentInput: "",
-        list: []
+        list: [],
+        errorText: ""
       }
     }
 
@@ -19,11 +20,17 @@ class App extends React.Component {
 
     handleClick(){
       var todoList;
+      if (this.state.currentInput.length > 1 && this.state.currentInput.length < 200) {
         todoList = this.state.list;
         todoList.push(this.state.currentInput);
         this.setState({list:todoList});
         let clearText = '';
         this.setState({currentInput: clearText});
+      }
+      else {
+        let errorMessageToUSer = "You only have 200 letters as limit!"
+        this.setState({errorText: errorMessageToUSer, currentInput: ''});
+      }
     }
         //need smth that takes the input and push into a list and show it in a <ul></ul>
 
@@ -34,6 +41,7 @@ class App extends React.Component {
             <input onChange={(event)=>{this.changeHandler(event);}} value = {this.state.currentInput}/>
             <button onClick={()=>{this.handleClick()}}>Add To List!</button>
             <List todo={this.state.list}/>
+            <p className="warning">{this.state.errorText}</p>
           </div>
         );
     }
