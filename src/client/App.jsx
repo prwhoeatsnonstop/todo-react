@@ -46,12 +46,10 @@ class App extends React.Component {
             } else {
                 displayErrorMsg = "";
             }
-    let counter = 0;
     let listOfToDos = this.state.list.map(list=> {
-        counter ++;
         return <div>
                         <li>{list.task}</li>
-                        <button onClick={(event)=>{this.deleteItem(event)}} value={counter-1}>Remove</button>
+                        <button onClick={(event)=>{this.deleteItem(event)}} >Remove</button>
                         </div>
     });
         return (
